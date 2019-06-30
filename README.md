@@ -41,7 +41,7 @@
 			  
 **Running the tests**
 
-1. Inside the folder src/test/java , You can find 3 packages 
+1. Inside the folder src/test/java , You can find 3 packages </br>
 	*CucumberTest
 	*runner
 	*StepDefinition
