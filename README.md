@@ -38,7 +38,9 @@
 		* You can download the driver for chrome from website https://sites.google.com/a/chromium.org/chromedriver/downloads
 		* Note : Please verify your chrome browser version  before you download it .
 		   	  My chrome Version is  75.0.3770.100 (Official Build) (64-bit) and download the driver accordingly
+			  
 **Running the tests**
+
 1. Inside the folder src/test/java , You can find 3 packages 
 	*CucumberTest
 	*runner
@@ -48,4 +50,12 @@
 4. After successful completion , press f5 or Refresh the project explorer screen
 5. A folder called target should be created (Step 5 from pic)
 6. Open the report.html in chrome and a report as below can be seen ,
+
+	![alt text](Report.png)
+	
+***Explanation on test Automation Suite:***
+ Can be explained separated in a call or can share a document with details if required.	
+
+ ** **Author** **
+ Agnel Leon
 
