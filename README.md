@@ -55,7 +55,7 @@
 	![alt text](Report.png)
 	
 ***Explanation on test Automation Suite:***
- Can be explained separated in a call or can share a document with details if required.	
+ Can be explained seperately in a call or can share a document with details if required.	
 
  ** **Author** **
  Agnel Leon
