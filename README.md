@@ -46,10 +46,11 @@
 	*runner
 	*StepDefinition
 2. Expand the Runner Package and open file SampleTestRunner.java (Step 6 from pic)
-3. Right click and run as Junit unit Test
-4. After successful completion , press f5 or Refresh the project explorer screen
-5. A folder called target should be created (Step 5 from pic)
-6. Open the report.html in chrome and a report as below can be seen ,
+3. For BDD Steps open the stepdefinition file and open Sample_Test.feature file (Step 3 from pic) relate these steps with project description
+4. Right click and run as Junit unit Test
+5. After successful completion , press f5 or Refresh the project explorer screen
+6. A folder called target should be created (Step 5 from pic)
+7. Open the report.html in chrome and a report as below can be seen ,
 
 	![alt text](Report.png)
 	
