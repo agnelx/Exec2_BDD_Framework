@@ -41,8 +41,8 @@ First I would like to apologize for misunderstanding .
 		* You can download the driver for chrome from website https://sites.google.com/a/chromium.org/chromedriver/downloads
 		* Note : Please verify your chrome browser version  before you download it .
 		   	  My chrome Version is  75.0.3770.100 (Official Build) (64-bit) and download the driver accordingly
-			  -Above step is not required but as part offramework without this step it will fail.
-			  -You don't have to download as we are not using it just create and place a file with name chromedriver.exe
+* Above step is not required but as part offramework without this step it will fail.
+* You don't have to download cromedriver as we are not using it but just create and place a file with name chromedriver.exe
 			  
 **Running the tests**
 
