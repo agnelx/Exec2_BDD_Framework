@@ -1,3 +1,5 @@
+First I would like to apologize for misunderstanding .
+
 **Project Title** : BDD Test Automation Suite </br>
 **Project Description** </br>
    -  This is a test project that is designed with all basic required automation scripts to run a full BDD suite .
@@ -40,6 +42,7 @@
 		* Note : Please verify your chrome browser version  before you download it .
 		   	  My chrome Version is  75.0.3770.100 (Official Build) (64-bit) and download the driver accordingly
 			  -Above step is not required but as part offramework without this step it will fail.
+			  -You don't have to download as we are not using it just create and place a file with name chromedriver.exe
 			  
 **Running the tests**
 
@@ -49,6 +52,19 @@
 	*StepDefinition
 2. Expand the Runner Package and open file SampleTestRunner.java (Step 4 from pic)
 3. For BDD Steps open the stepdefinition file and open Sample_Test.feature file (Step 5 from pic) relate these steps with project description
+  ** We are using Examples keyword to pass our arguments , All the Steps are rerunnabe with different example sets</br> 
+  	|Script_Path|Script|Application|Interval|Python_path|outputfile|logfile|tmpfile|</br> 
+		|"D:\Exec1\"|"Process_list_Details_windows_new.py"|"notepad"|"1"|"C:\\Python36\\python.exe"|"output.txt"|"processdetail.log"|"tmp_process_lst.txt"|
+		
+* Script_Path  - Pass the folder path where your script is placed
+* Script - Pass the Script name 
+* Application - Process that you need to pass to script 
+* Interval - time in mins that you need to pass to script 
+* Python_path - Pass the path of your python.exe file (we need to run and test the script as part of our automation framework)
+* outputfile - default it as "output.txt"
+* logfile - default it as "processdetail.log"
+* tmpfile - default it as "tmp_process_lst.txt"
+	
 4. Right click and run as Junit unit Test
 5. After successful completion , press f5 or Refresh the project explorer screen
 6. A folder called target should be created (Step 6 from pic)
