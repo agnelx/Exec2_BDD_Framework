@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 
+import java.io.*;
 import java.util.concurrent.TimeUnit;
 
 
@@ -30,32 +31,91 @@ import manager.FileReaderManager;
 public class sampleSteps {
 
 	WebDriver driver;
-	private homepage home;
 	private categorypage category;
 	private orderPage order;
 
 	PageObjectManager pageObjectManager;
 
-	@Given("^You are in Home page of Mystore with URL \"([^\"]*)\"$")
-	public void you_are_in_Home_page_of_Mystore(String pagelink) {
+	
+	@Given("^User is in <Script_Path>$")
+	public void user_is_in_Script_Path() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    
+	}
+	
+	@When("^Check Is the application available in \"([^\"]*)\" with \"([^\"]*)\"$")
+	public void check_do_we_hav_application(String P_Path,String P_file) throws Throwable {
 		
-		System.setProperty("webdriver.chrome.driver", FileReaderManager.getInstance().getConfigReader().getDriverPath());
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(FileReaderManager.getInstance().getConfigReader().getImplicitlyWait(), TimeUnit.SECONDS);
-		pageObjectManager = new PageObjectManager(driver);
-		driver.get(pagelink);
+		File f = new File(P_Path+P_file); 
+		
+		  if(f.exists() && f.isFile()) {
+			  System.out.println("File/Application Available");
+		  }
+		  else
+		  {
+			  System.out.println("File/Application not Available");
+			  Assert.fail();
+		  }
+		  
+	}
+	
+	
+	@When("User has access to application in \"([^\"]*)\" with \"([^\"]*)\"$")
+	public void User_has_to_application(String P_Path,String p_file) throws Throwable {
+		
+		File f = new File(P_Path+p_file);
+		System.out.println(p_file);
+		boolean exists = f.exists(); 
+        if(exists == true) 
+        {
+        boolean Exec = f.canExecute();
+        
+        if(Exec == false) 
+        {
+        	System.out.println("File not Executable."); 
+        	Assert.fail();
+        }
+        
+        }
+        else
+        { 
+            System.out.println("File not found."); 
+            Assert.fail();
+        } 
 	}
 
-	@When("^Navigates to \"([^\"]*)\" Section$")
-	public void navigates_to_Section(String p1) {
-
-		switch (p1) {
-		case "Tshirt":
-			home = new homepage(driver);
-			home.getTshirt().click();
-
-		}
+	@Then("^Run the application/script from \"([^\"]*)\" with \"([^\"]*)\",\"([^\"]*)\" for \"([^\"]*)\" with \"([^\"]*)\"$")
+	public void run_the_application_script(String python_path,String Scriptpath,String Script,String Application ,String Interval ) throws IOException {
+		
+		try {
+	    /// set up the command and parameter
+					
+			String pythonScriptPath = Scriptpath+Script;
+        
+			Process pr = Runtime.getRuntime().exec(python_path+" "+pythonScriptPath+" "+Application+" "+Interval ); 
+			 
+			// retrieve output from python script
+			BufferedReader bfr = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+			String line = "";
+			
+					while((line = bfr.readLine()) != null) {
+					// display each output line form python script
+					System.out.println(line);
+					if(line != null) {
+						Assert.assertTrue(true);
+						}
+			
+		                     }
+					
+	} catch (Exception e ) {
+		e.printStackTrace();
+	}
+	}
+	
+	@Then("^wait for \"([^\"]*)\" minutes$")
+	public void wait_for_minutes(String time) throws Throwable {
+	    
+		TimeUnit.MINUTES.sleep(1);
 	}
 
 	@Then("^Click on to any item from list$")
@@ -65,6 +125,22 @@ public class sampleSteps {
 		category = pageObjectManager.getcategoryPage();
 		category.getitem().click();
 
+	}
+	
+	@Then("^Check is the file available in \"([^\"]*)\" with \"([^\"]*)\"$")
+	public void check_do_we_hav_file(String P_Path,String P_file) throws Throwable {
+		
+		File f = new File(P_Path+P_file); 
+		
+		  if(f.exists() && f.isFile()) {
+			  System.out.println("File Available");
+		  }
+		  else
+		  {
+			  System.out.println("File not Available");
+			  Assert.fail();
+		  }
+		  
 	}
 
 	@And("^Click on to add to Cart$")
@@ -95,6 +171,10 @@ public class sampleSteps {
 		String total_item=total_item_Org.substring(0, 1);
 		Assert.assertEquals(P_item_no, total_item);
 	}
+	
+	
+	
+	
 	
 	
 	@And("^Close the browser$")
